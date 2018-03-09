@@ -10,7 +10,7 @@ const {PORT, CLIENT_ORIGIN} = require('./config');
 
 const app = express();
 
-const cats = [
+let cats = [
   {
     imageURL:'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg',
     imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
@@ -40,7 +40,7 @@ const cats = [
   }
 ];
 
-const dogs = [
+let dogs = [
   {
     imageURL: 'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
     imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
@@ -85,6 +85,16 @@ app.use(
 app.get('/api/cat', (req, res) => res.json(cats[0]));
 
 app.get('/api/dog', (req, res) => res.json(dogs[0]));
+
+app.delete('/api/cat', (req, res) => {
+  cats.shift();
+  return res.status(204).send();
+});
+
+app.delete('/api/dog', (req, res) => {
+  dogs.shift();
+  return res.status(204).send();
+});
 
 function runServer(port = PORT) {
   const server = app
