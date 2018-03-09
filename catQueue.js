@@ -1,10 +1,10 @@
 'use strict';
 
-const Queue = require('./queue');
+const Q = require('./queue');
 
-const cats = new Queue();
+const catQueue = new Q.Queue();
 
-cats.enqueue(
+catQueue.enqueue(
   {
     imageURL:'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg',
     imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
@@ -16,7 +16,7 @@ cats.enqueue(
   }
 );
 
-cats.enqueue(
+catQueue.enqueue(
   {
     imageURL:'https://i.imgur.com/KSFeIO1.jpg',
     imageDescription: 'Gray cat standing on her hind legs on the bed',
@@ -28,7 +28,7 @@ cats.enqueue(
   }
 );
 
-cats.enqueue(
+catQueue.enqueue(
   {
     imageURL:'https://i.imgur.com/S16mvmE.jpg',
     imageDescription: 'Gray maine coon cat with fur shaped to make it look like a little lion',
@@ -40,4 +40,4 @@ cats.enqueue(
   }
 );
 
-module.exports = cats;
+module.exports = catQueue;

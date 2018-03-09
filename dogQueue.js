@@ -1,10 +1,10 @@
 'use strict';
 
-const Queue = require('./queue');
+const Q = require('./queue');
 
-const dogs = new Queue();
+const dogQueue = new Q.Queue();
 
-dogs.enqueue(
+dogQueue.enqueue(
   {
     imageURL: 'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
     imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
@@ -16,7 +16,7 @@ dogs.enqueue(
   }
 );
 
-dogs.enqueue(
+dogQueue.enqueue(
   {
     imageURL: 'https://i.imgur.com/Fr9luGW.jpg',
     imageDescription: 'Beagle puppy with his head down has he fails to walk up stairs',
@@ -28,7 +28,7 @@ dogs.enqueue(
   }
 );
 
-dogs.enqueue(
+dogQueue.enqueue(
   {
     imageURL: 'https://i.imgur.com/W7V6Q.jpg',
     imageDescription: 'A goldendoodle puppy sitting on a small bag of kibble in the front seat of a car.',
@@ -40,4 +40,4 @@ dogs.enqueue(
   }
 );
 
-module.exports = dogs;
+module.exports = dogQueue;

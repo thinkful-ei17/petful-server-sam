@@ -47,5 +47,4 @@ const peek = queue => {
   return queue.first.data;
 };
 
-module.exports = peek;
-module.exports = Queue;
+module.exports = { Queue, peek };

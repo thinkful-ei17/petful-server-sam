@@ -10,9 +10,9 @@ const {PORT, CLIENT_ORIGIN} = require('./config');
 
 const app = express();
 
-const peek = require('./queue');
-const cats = require('./catQueue');
-const dogs = require('./dogQueue');
+const catQueue = require('./catQueue');
+const dogQueue = require('./dogQueue');
+const { peek } = require('./queue');
 
 app.use(
   morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
@@ -26,17 +26,17 @@ app.use(
   })
 );
 
-app.get('/api/cat', (req, res) => res.json(cats[0]));
+app.get('/api/cat', (req, res) => res.json(peek(catQueue)));
 
-app.get('/api/dog', (req, res) => res.json(dogs[0]));
+app.get('/api/dog', (req, res) => res.json(peek(dogQueue)));
 
 app.delete('/api/cat', (req, res) => {
-  cats.shift();
+  catQueue.dequeue();
   return res.status(204).send();
 });
 
 app.delete('/api/dog', (req, res) => {
-  dogs.shift();
+  dogQueue.dequeue();
   return res.status(204).send();
 });
 
